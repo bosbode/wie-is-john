@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
+
+    <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+    <title>{{ site.title }}</title>
+
+    {% block stylesheets %}
+
+    <!-- Custom CSS -->
+    {% do assets.addCss('theme://assets/temp/styles/styles.css',100) %}
+
+    <!-- Custom Fonts -->
+    {% do assets.addCss('theme://assets/font-awesome/css/font-awesome.min.css',100) %}
+    <link href="https://fonts.googleapis.com/css?family=Tinos:400,400i,700,700i" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,700,600" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascript_top %}
+        <!-- Vendor JavaScript -->
+        {% do assets.addJs('theme://assets/temp/scripts/Vendor.js', {'group':'javascript_top'}) %}
+    {% endblock %}
+    {{ assets.js('javascript_top') }}
+    
+  {% endblock head%}
+
+</head>
+
+<body>
+
+    <header class="content">
+        <div class="wrapper">
+            <h1 class="brand-heading">Error {{ page.header.http_response_code }}</h1>
+            <p class="intro-text">{{ page.content }}</p>
+        </div>
+    </header>
+
+    {% block javascripts_bottom %}
+
+      <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv1l7qVWIUaKC3SbdQSoBgxVwy52Edu9U"></script>
+
+      <!-- Custom Theme JavaScript -->
+      {% do assets.addJs('theme://assets/temp/scripts/App.js') %}
+
+    {% endblock %}
+  {{ assets.js() }}
+
+</body>
+
+</html>

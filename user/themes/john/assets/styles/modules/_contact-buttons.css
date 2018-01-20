@@ -1,0 +1,23 @@
+.contact-buttons {
+
+	&__icons {
+		display: inline-block;
+		height: 30px;
+		width: 30px;
+		margin-right: 4px;
+		background: $color-primary;
+	}
+
+	&__icons--instagram {
+		background: darkred;
+	}
+
+	& img {
+		height: 30px;
+		width: 30px;
+		text-align: center;
+		padding: 6px 0;
+	}
+
+	
+}

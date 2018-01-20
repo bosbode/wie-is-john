@@ -1,0 +1,30 @@
+{% extends 'partials/base.html.twig' %}
+
+{% macro pageLinkName(text) %}{{ text|lower|replace({' ':'_'}) }}{% endmacro %}
+
+{% block content %}
+
+    <div class="content-container">
+
+        <h1>{{ page.header.title }}</h1>
+        <small>{{ page.header.subtitle }}</small>
+        
+        {{ page.content }}
+
+        <div class="contact-buttons">
+            <a class="contact-buttons__icons" href="tel:+31624675079">
+                <img src="./user/themes/john/assets/images/svg/phone.svg">
+            </a>
+            <a class="contact-buttons__icons" href="mailto:john@wieisjohn.com">
+                <img src="./user/themes/john/assets/images/svg/envelope.svg">
+            </a>
+            <a class="contact-buttons__icons contact-buttons__icons--instagram" href="https://www.instagram.com/wieisjohn/">
+                <img src="./user/themes/john/assets/images/svg/instagram.svg">
+            </a>
+            
+        </div>
+    </div>
+
+    <div class="image-container"></div>
+
+{% endblock %}

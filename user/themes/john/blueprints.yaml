@@ -1,0 +1,34 @@
+name: Restaurant Savage
+version: 1.0.0
+description: "Custom build theme for Grav, inspired by the Grayscale theme"
+icon: group
+author:
+  name: Bosse Kemper
+  email: me@bkmpr.com
+  url: http://bkmpr.com
+homepage: https://github.com/bosbode/savage
+keywords: 
+bugs: 
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in navbar
+        highlight: 1
+        default: 0
+        options:
+          1: Enabled
+          0: Disabled
+        validate:
+          type: bool
+
+    color:
+        type: text
+        size: medium
+        label: Color
+        default: 'blue'
+        validate:
+          type: text

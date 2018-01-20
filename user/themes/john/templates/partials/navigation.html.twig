@@ -1,0 +1,29 @@
+<!-- Navigation -->
+<header class="site-header">
+<div class="wrapper wrapper--no-padding-top">
+  <div class="site-header__logo">
+      <a href="#"><img src="./user/themes/fish/assets/images/fish.svg"></a>
+  </div>
+
+  <div class="site-header__menu-icon">
+    <div class="site-header__menu-icon__middle"></div>
+  </div>
+
+  <div class="site-header__menu-content">
+    <nav class="primary-nav primary-nav--pull-right">
+      <ul>
+        {% for link in site.links %}
+            {% if link.url | contains('http') %}
+                {% set domain = '' %}
+            {% elseif link.url | contains('#') %}
+                {% set domain = '' %}
+            {% else %}
+                {% set domain = base_url_absolute %}
+            {% endif %}
+                <li><a id="{{ link.id }}-link" href="{{ domain }}{{ link.url }}" {% if link.url | contains('http') %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>
+</header>

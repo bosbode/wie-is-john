@@ -1,0 +1,11 @@
+title: wie is john?
+author:
+  name: Bosse Kemper
+  email: 'bossekemper@gmail.com'
+metadata:
+    description: 'John ten Berge, schilder, kunstenaar, muzikant en levensgenieter'
+
+# Site settings
+title: wie is john?
+email: john@wieisjohn.com
+description: "John ten Berge, schilder, kunstenaar, muzikant en levensgenieter"

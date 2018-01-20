@@ -1,0 +1,8 @@
+/cache
+.DS_Store
+/node_modules
+/assets
+/images
+/logs
+/user/accounts
+/user/themes/john/assets/temp

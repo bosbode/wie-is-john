@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
+
+    <meta name="theme-color" content="#FFFFFF">
+    <title>{{ site.title }}</title>
+
+    {% block stylesheets %}
+
+    <!-- Custom CSS -->
+    {% do assets.addCss('theme://assets/temp/styles/styles.css',100) %}
+    
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascript_top %}
+        <!-- Vendor JavaScript -->
+        {% do assets.addJs('theme://assets/temp/scripts/Vendor.js', {'group':'javascript_top', 'loading':'async'}) %}
+    {% endblock %}
+    {{ assets.js('javascript_top') }}
+    
+  {% endblock head%}
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    {% block body %}
+      {% block content %}{% endblock %}
+    {% endblock %}
+
+    {# {% block footer %}
+        {% include 'partials/footer.html.twig' %}
+    {% endblock %} #}
+
+    {% block javascripts_bottom %}
+
+      <!-- Custom Theme JavaScript -->
+      {% do assets.addJs('theme://assets/temp/scripts/App.js', {'loading':'async'}) %}
+
+    {% endblock %}
+  {{ assets.js() }}
+
+</body>
+
+</html>
