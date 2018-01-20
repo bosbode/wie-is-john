@@ -1,12 +1,12 @@
-name: Restaurant Savage
+name: Wie is John?
 version: 1.0.0
-description: "Custom build theme for Grav, inspired by the Grayscale theme"
+description: "Website with work from John ten Berge"
 icon: group
 author:
   name: Bosse Kemper
-  email: me@bkmpr.com
-  url: http://bkmpr.com
-homepage: https://github.com/bosbode/savage
+  email: bosse.kemper@gmail.com
+  url: https://github.com/bosbode
+homepage: https://github.com/bosbode/wie-is-john
 keywords: 
 bugs: 
 license: MIT
