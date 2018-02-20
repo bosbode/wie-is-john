@@ -1,4 +1,5 @@
 var path = require('path'),
+UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 config = require("./gulp/config.json");
 
 module.exports = {
@@ -32,5 +33,8 @@ module.exports = {
 				exclude: /node_modules/
 			}
 		]
-	}
+	},
+	plugins: [
+    new UglifyJsPlugin()
+  ]
 }
