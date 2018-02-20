@@ -1,26 +1,27 @@
-var path = require('path');
+var path = require('path'),
+config = require("./gulp/config.json");
 
 module.exports = {
 	entry: {
-		App: "./user/themes/john/assets/scripts/App.js",
-		Vendor: "./user/themes/john/assets/scripts/Vendor.js"
+		App: "./user/themes/" + config.theme + "/assets/scripts/App.js",
+		Vendor: "./user/themes/" + config.theme + "/assets/scripts/Vendor.js"
 	},
 	output: {
-		path: __dirname + "/user/themes/john/assets/temp/scripts",
+		path: __dirname + "/user/themes/" + config.theme + "/assets/compiled/scripts",
 		filename: "[name].js"
 	},
 	module: {
-		rules: [{
-			test: require.resolve('jquery'),
-			use: [{
-				loader: 'expose-loader',
-				options: 'jQuery'
-			},
-			{
-				loader: 'expose-loader',
-				options: '$'
-			}]
-		}],
+		rules: [{ 
+			test: require.resolve('jquery'), 
+			use: [{ 
+			  loader: 'expose-loader', 
+			  options: 'jQuery' 
+			}, 
+			{ 
+			  loader: 'expose-loader', 
+			  options: '$' 
+			}] 
+		  }], 
 		loaders: [
 			{
 				loader: "babel-loader",

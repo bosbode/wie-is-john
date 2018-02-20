@@ -1,0 +1,39 @@
+// @define-mixin atSmall {
+// 	@media (min-width: 600px) {
+// 		@mixin-content;
+// 	}
+// }
+
+// @define-mixin atMedium {
+// 	@media (min-width: 900px) {
+// 		@mixin-content;
+// 	}
+// }
+
+// @define-mixin atLarge {
+// 	@media (min-width: 1200px) {
+// 		@mixin-content;
+// 	}
+// }
+
+// @define-mixin atWide {
+// 	@media (min-width: 1800px) {
+// 		@mixin-content;
+// 	}
+// }
+
+@mixin breakpoint($point) {
+	@if $point == atWide {
+		@media (min-width: 1800px) { @content ; }
+	}
+	@else if $point == atLarge {
+		@media (min-width: 1200px) { @content ; }
+	}
+		@else if $point == atMedium {
+		@media (min-width: 900px) { @content ; }
+	}
+	@else if $point == atSmall {
+		@media (min-width: 600px)  { @content ; }
+	}
+}
+ 

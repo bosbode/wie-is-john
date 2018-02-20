@@ -1,10 +1,11 @@
-var gulp = require("gulp"),
+var gulp = require('gulp'),
 php = require('gulp-connect-php'),
-watch = require("gulp-watch"),
-del = require("del"),
-browserSync = require("browser-sync").create();
+watch = require('gulp-watch'),
+del = require('del'),
+browserSync = require('browser-sync').create(),
+config = require('../config.json');
 
-gulp.task("watch", ['php'], function(){
+gulp.task('watch', ['clearCompiled', 'php', 'clearCache', 'scripts', 'styles'], function(){
 
 	browserSync.init({
         proxy: '127.0.0.1:8010',
@@ -13,30 +14,30 @@ gulp.task("watch", ['php'], function(){
         notify: false
     });
 
-	watch("./user/pages/**/**/*.md", function(){
+	watch('./user/pages/**/**/*.md', function(){
 		browserSync.reload();
 	});
 
-	watch("./user/themes/john/assets/styles/**/*.css", function(){
-		gulp.start("cssInject");
+	watch('./user/themes/' + config.theme + '/assets/styles/**/*.scss', function(){
+		gulp.start('cssInject');
 	});
 
-	watch("./user/themes/john/assets/scripts/**/*.js", function(){
-		gulp.start("scriptsRefresh");
+	watch('./user/themes/' + config.theme + '/assets/scripts/**/*.js', function(){
+		gulp.start('scriptsRefresh');
 	});
 	
-	watch("./user/themes/john/templates/**/*.twig", function(){
-		gulp.start("cacheRefresh");
+	watch(['./user/themes/' + config.theme + '/templates/**/*.twig', './user/pages/**/*'], function(){
+		gulp.start('cacheRefresh');
 	});
 
 });
 
-gulp.task("cssInject", ["styles"], function(){
-	return gulp.src("./user/themes/john/assets/temp/styles/styles.css")
+gulp.task('cssInject', ['styles'], function(){
+	return gulp.src('./user/themes/' + config.theme + '/assets/compiled/styles/main.css')
 		.pipe(browserSync.stream());
 });
 
-gulp.task("scriptsRefresh", ["scripts"], function(){
+gulp.task('scriptsRefresh', ['scripts'], function(){
 	browserSync.reload();
 });
 
@@ -45,10 +46,18 @@ gulp.task('php', function() {
 });
 
 gulp.task('clearCache', function(){
-	return del(["./cache/"]);
+	return del(['./cache/']);
 });
 
-gulp.task("cacheRefresh", ["clearCache"], function(){
+gulp.task('clearCompiled', function(){
+	return del(['./user/themes/' + config.theme + '/assets/compiled']);
+});
+
+gulp.task('cacheRefresh', ['clearCache'], function(){
 	browserSync.reload();
+});
+
+gulp.task('default', function () {
+	gulp.start('watch');
 });
 

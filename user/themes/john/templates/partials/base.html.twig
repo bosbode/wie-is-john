@@ -11,17 +11,17 @@
     <meta name="theme-color" content="#FFFFFF">
     <title>{{ site.title }}</title>
 
-    {% block stylesheets %}
+    {% block criticalCSS %}
 
-    <!-- Custom CSS -->
-    {% do assets.addCss('theme://assets/temp/styles/styles.css',100) %}
-    
+    <!-- Critical CSS -->
+    {% do assets.addCss('theme://assets/compiled/styles/main.critical.css', {'group':'criticalCSS', 'loading': 'inline'}) %}
+
     {% endblock %}
-    {{ assets.css() }}
+    {{ assets.css('criticalCSS') }}
 
     {% block javascript_top %}
         <!-- Vendor JavaScript -->
-        {% do assets.addJs('theme://assets/temp/scripts/Vendor.js', {'group':'javascript_top', 'loading':'async'}) %}
+        {% do assets.addJs('theme://assets/compiled/scripts/Vendor.js', {'group':'javascript_top', 'loading':'async'}) %}
     {% endblock %}
     {{ assets.js('javascript_top') }}
     
@@ -39,10 +39,20 @@
         {% include 'partials/footer.html.twig' %}
     {% endblock %} #}
 
+    {% block stylesheets %}
+
+    <!-- Custom CSS -->
+    {% do assets.addCss('theme://assets/compiled/styles/main.css',100) %}
+    
+    {% endblock %}
+    {{ assets.css() }}
+
     {% block javascripts_bottom %}
 
+      {% do assets.addJs('theme://assets/compiled/scripts/modernizr.js', {'loading':'async'}) %}
+      
       <!-- Custom Theme JavaScript -->
-      {% do assets.addJs('theme://assets/temp/scripts/App.js', {'loading':'async'}) %}
+      {% do assets.addJs('theme://assets/compiled/scripts/App.js', {'loading':'async'}) %}
 
     {% endblock %}
   {{ assets.js() }}
